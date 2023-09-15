@@ -5,7 +5,6 @@ Copyright (c) 2023 FutureX. All rights reserved.
 """
 
 from apps.home import blueprint
-from apps.home.writingTool import dataJson
 from flask import render_template, request
 from flask_login import login_required
 from jinja2 import TemplateNotFound
@@ -14,7 +13,7 @@ from jinja2 import TemplateNotFound
 @blueprint.route('/index')
 @login_required
 def index():
-    return render_template('home/index.html', segment='index',viewTool=dataJson)
+    return render_template('home/index.html', segment='index')
 
 
 
