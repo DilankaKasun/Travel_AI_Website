@@ -1,0 +1,253 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} About {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+
+
+{% include 'includes/preloader.html' %}
+
+<style>
+    .tool-box{
+        margin-top: 5%;
+    }
+    .tool-box-panl{
+        background-color: rgba(252, 253, 254, 0.568);
+        border-radius: 5%;
+        height:100%;
+    }
+    
+  .output{
+    display: block;
+    background-color: rgba(255, 255, 255, 0.534);
+    position: absolute;
+    width: 48%;
+    bottom:60%;
+    border-radius: 2%;
+ 
+  }
+.box-pont{
+    padding: 5%;
+    border-radius: 5%;
+}
+.output .head{
+    margin-left:2%;
+    margin-top:2%;
+    margin-bottom: 2%;
+    cursor: pointer;
+}
+.output .txt{
+    margin-left: 2%;
+    display: block;
+}
+.output .txt p{
+    width: 5%;
+}
+.box-pont{
+    background-color:#f5f8ff;
+}
+.tab-pane{
+    opacity: 1;
+    background-color:#f5f8ffaf;
+}
+.box-item{
+    background-color: #f5f8ffa8;
+    border-radius:4%;
+}
+
+
+
+@media (max-width: 575.98px) {
+    .box-item{
+        display: none;
+       
+        margin-left: 20%;
+        
+  } 
+ 
+ .tool-name{
+    margin-top: 5%;
+ }
+
+
+  
+  } 
+
+
+</style>
+
+
+<div class="container-fluid">
+    <section class="tool-box">
+        <div class="row">
+                <div class="col-5 tool-box-panl">
+                    <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <details typeof="Item" class="nav-link active" id="Features-tab" data-bs-toggle="tab"
+                                data-bs-target="#Features-tab-pane" role="tab" aria-controls="Features-tab-pane" aria-selected="true">
+                                <meta property="open" aria-label="Open" class="mv-empty" datatype="boolean">
+                                <summary property="title" typeof="Item">
+                                    <img class="icon" src="/static/assets/img/illustrations/undraw_bookmarks_re_mq1u.svg" alt="Icon">
+                                    <span property="text" aria-label="Text" class="">Features</span>
+                                </summary>
+                            </details>
+                        </li>
+                        <li class="nav-item">
+                            <details class="nav-link" id="Setting-tab" data-bs-toggle="tab" data-bs-target="#Setting-tab-pane"
+                                type="button" role="tab" aria-controls="Setting-tab-pane" aria-selected="false">
+                                <meta property="open" aria-label="Open" class="mv-empty" datatype="boolean">
+                                <summary property="title" typeof="Item">
+                                    <img class="icon" src="/static/assets/img/illustrations/undraw_settings_re_b08x.svg" alt="Icon">
+                                    <span property="text" aria-label="Text" class="">Setting</span>
+                                </summary>
+                            </details>
+                        </li>
+                    </ul>
+                    <form method="post" action="" class="box-pont">
+                        <div class="tab-content" id="myTabContent">
+                            <section class="feature tab-pane fade show active" id="Features-tab-pane" role="tabpanel"
+                                aria-labelledby="Features-tab" tabindex="0">
+                                {{ form.hidden_tag() }}
+                                <!-- Form -->
+                                {% for tooldataf in ToolData['tool'][0] %}
+                                <div class="form-group mb-4 ">
+                                    <label for="email">{{ToolData['tool'][0][tooldataf]}}</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text" id="basic-addon1"><span class="{{ToolData['tool'][1][tooldataf]}}"></span></span>
+                                        {{
+                                            
+                                            classMarch(form,tooldataf)(class="form-control")
+                                           
+                                        }}
+                                    </div>
+                                </div>
+                                {% endfor %}
+                                <!-- End of Form -->
+                            
+                                <div class="d-grid">
+                                    <button type="submit" name="login" class="btn btn-primary">Generator</button>
+                                </div>
+                            </section>
+                            <section class="feature tab-pane" id="Setting-tab-pane" role="tabpanel" aria-labelledby="Setting-tab" tabindex="0">
+                                {{ form.hidden_tag() }}
+                                <!-- Form -->
+                                <div class="form-group mb-4 ">
+                                    <label for="Creativity">Creativity</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text" id="basic-addon1"><span class="fas fa-user-cog"></span></span>
+                                        {{ form.selectCreativity(class="form-control")}}
+                                    </div>
+                                </div>
+                                <!-- End of Form -->
+                                <div class="form-group">
+                                    <!-- Form -->
+                                    <div class="form-group mb-4">
+                                        <label for="password">Outputs:</label>
+                                        <div class="input-group">
+                                            {{ form.rang1()}}
+                                        </div>
+                                    </div>
+                                    <!-- End of Form -->
+                                    <div class="d-flex justify-content-between align-items-center mb-4">
+                
+                                    </div>
+                                </div>
+                                <div class="form-group mb-4 ">
+                                    <label for="Creativity">Tone of voice</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text" id="basic-addon1"><span class="fas fa-id-badge"></span></span>
+                                        {{ form.txt5(class="form-control")}}
+                                    </div>
+                                </div>
+
+                                <div class="form-group mb-4 ">
+                                    <label for="Creativity">Target audience</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text" id="basic-addon1"><span class="fas fa-users"></span></span>
+                                        {{ form.txt6(class="form-control")}}
+                                    </div>
+                                </div>
+                                <div class="d-grid">
+                                    <button type="submit" name="login" class="btn btn-primary">Generator</button>
+                                </div>
+                            </section>
+                        </div>
+                    </form>
+                </div>
+            
+                
+                <div class="inf col-7">
+                    <br>
+                    <h2 class="tool-name">{{ToolData['titel']}}</h2>
+                    <div class="inf-text">
+                        {% for p in ToolData['dis'] %}
+                        <p style="color:rgb(8, 8, 8);width: 100%;">
+                        {{p}}
+                        </p>
+                        {% endfor %}
+                    </div>
+                    <img id="baner-icon" src="{{ToolData['img']}}" alt="monitoring">
+                        <!-- <div class="output">
+                            <div class="head">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
+                                    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                                    <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+                                </svg>
+                            </div>
+                        <hr>
+                        <div class="txt">
+                            <p></p>
+                        </div>
+                            
+                        </div> -->
+                </div>
+            </div>
+        </div>
+        </section>
+
+    <br>
+    <br><br>
+    <section class="section  py-0 banner" >
+        
+            <div class="row position-relative justify-content-center align-items-cente">
+                <div class="col-12">
+        
+                    <div class="card border-light px-4 py-1">
+                        <div class="card-body text-center text-md-left">
+                            <div class="row align-items-center">
+                                <div class="col-md-6">
+                                    <h2 class="h1 mb-3">Become one of the serves</h2>
+                                    <p class="lead mb-4">
+                                        Before Purchading our services, you can experience them here
+                                    </p>
+                                    <a href="#" class="btn btn-primary">
+                                        <span class="me-1">
+                                            <span class="fas fa-file-invoice"></span>
+                                        </span>
+                                        Check Now
+                                    </a>
+                                </div>
+                                <div class="col-12 col-md-6 mt-5 mt-md-0 text-md-right">
+                                    <img src="/static/assets/img/illustrations/reading-side.svg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </section>
+
+
+</div>
+   
+
+{% include 'includes/footer-about.html' %}
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}
