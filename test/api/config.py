@@ -5,17 +5,18 @@ class API_Data():
         if key == "booking_com":
             headers["X-RapidAPI-Host"]="booking-com.p.rapidapi.com"
             urls.append('https://booking-com.p.rapidapi.com/v1/metadata/exchange-rates')
-        elif key == "Tripadvisor":
+        elif key == "Tripadvisor_com":
             headers["X-RapidAPI-Host"]="tripadvisor16.p.rapidapi.com"
             urls.append(urls = 'https://tripadvisor16.p.rapidapi.com/api/v1/flights/searchAirport')
         elif key == "sky-scrapper":
             headers["X-RapidAPI-Host"]="sky-scrapper.p.rapidapi.com"    
-
             
 class config(API_Data):
     def booking_com(self):
         self._key("booking_com")
         querystring = None
+    def tripadvisor_com(self):
+        self._key("Tripadvisor_com")
 
 class  main(config):
     def run(self):
