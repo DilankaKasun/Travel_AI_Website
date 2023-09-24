@@ -11,26 +11,29 @@ class API_Data():
             urls.append(f'https://tripadvisor16.p.rapidapi.com/api/v1/{main}/{sub}')
         elif key == "sky_scrapper":
             headers["X-RapidAPI-Host"] = "sky-scrapper.p.rapidapi.com"
-            urls.append(f'https://sky-scrapper.p.rapidapi.com/api/v1//{main}/{sub}')
+            urls.append(f'https://sky-scrapper.p.rapidapi.com/api/v1/{main}/{sub}')
 
 
 class config(API_Data):
-    def booking_com(self):
-        self._key("booking_com", "data", "data")
-        querystring = None
+    def booking_com(self, dmain, sub):
+        self._key("booking_com", dmain, sub)
+        
 
-    def tripadvisor_com(self):
-        self._key("Tripadvisor_com", "data", "data")
-        querystring = None
+    def tripadvisor_com(self, dmain, sub):
+        self._key("Tripadvisor_com", dmain, sub)
+        
 
-    def sky_scrapper_com(self):
-        self._key("sky_scrapper", "data", "data")
-        querystring = None
-
+    def sky_scrapper_com(self, dmain, sub):
+        self._key("sky_scrapper", dmain, sub)
+      
 
 class main(config):
-    def run(self, data=None):
+    def run(self, data=None, dmain=None, sub=None):
         if data == "booking":
-            self.booking_com() 
+            return self.booking_com(dmain, sub)
+        elif data == "Tripadvisor":
+            return  self.tripadvisor_com(dmain, sub)
+        elif data == "sky_scrapper":
+            return  self.sky_scrapper_com(dmain, sub)
 
 
