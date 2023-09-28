@@ -65,9 +65,7 @@ class Hotels(query):
 	def Review_scores(self,hotel_id,locale_num):
 		self.params["hotel_id"]=hotel_id
 		self.params["locale"]=self.locale[locale_num]
-	
 
-class Search(Hotels):
 	def coordinates(self,units_num,room_number,longitude,latitude,filter_by_currency,order_by_num,locale_num,checkout_date,adults_number,checkin_date,children_ages,children_number,page_number,categories_filte_num):
 		self.params["units"]=self.units[units_num]
 		self.params["room_number"]=room_number
@@ -129,10 +127,10 @@ class CarRent(query):
 		self.params["location_id"] = location_id
 		self.params["from_country"] = self.from_country[from_country_num]
 		
-	def Rental_terms(self, from_country, pick_up_location_id, locale): 
+	def Rental_terms(self, from_country, pick_up_location_id, locale_num): 
 		self.params["from_country"] = from_country
 		self.params["pick_up_location_id"] = pick_up_location_id
-		self.params["locale"] = self.locale[locale]
+		self.params["locale"] = self.locale[locale_num]
 	
 	
 class ListData(query):
@@ -151,7 +149,7 @@ class ListData(query):
 
 	
 
-class urlhandel():
+class Datahandel():
 	handel = {
 		'exchange':{
 			'exchange_rates':{
@@ -225,22 +223,147 @@ class urlhandel():
 		 return self.handel[mainClass][method]
 		
 	
-class queryhandle(exchange,Search,CarRent,ListData):
-	def query(self,main,sub):
-		pass
+class queryhandle(exchange,Hotels,CarRent,ListData,Datahandel):
+	def run(self,main,sub,paramete={}):
+		if (main == "exchange"):
+			if (sub == "exchange_rates"):
+				currency_num = paramete['currency_num']
+				locale_num = paramete['locale_num']
+				self.exchange_rates(currency_num=currency_num,locale_num=locale_num)
 		
+		elif (main == "Hotels"):
+
+			if (sub=="Data_hotel"):
+				hotel_id = paramete['hotel_id']
+				locale_num = paramete['locale_num']
+				self.Data_hotel(hotel_id=hotel_id,locale_num=locale_num)
+				
+			elif (sub=="Reviews_hotel"):
+				sort_type_num = paramete['sort_type_num']
+				locale_num = paramete['locale_num']
+				hotel_id = paramete['hotel_id']
+				locale_num = paramete['customer_type']
+				self.Reviews_hotel(sort_type_num=sort_type_num,locale_num=locale_num,hotel_id=hotel_id)
+						
+			elif (sub=="Description_hotel"):
+				hotel_id = paramete['hotel_id']
+				locale_num = paramete['locale_num']
+				self.Description_hotel(hotel_id=hotel_id,locale_num=locale_num)
+				
+
+			elif (sub=="Review_scores"):
+				hotel_id = paramete['hotel_id']
+				locale_num = paramete['locale_num']
+				self.Review_scores(hotel_id=hotel_id,locale_num=locale_num)
+
+			elif (sub=="coordinates"):
+				units_num = paramete['units_num']
+				room_number = paramete['room_number']
+				longitude = paramete['longitude']
+				latitude = paramete['latitude']
+				filter_by_currency = paramete['filter_by_currency']
+				order_by_num = paramete['order_by_num']
+				locale_num = paramete['locale_num']
+				checkout_date = paramete['checkout_date']
+				children_number = paramete['children_number']
+				page_number = paramete['page_number']
+				children_ages = paramete['children_ages']
+				categories_filte_num = paramete['categories_filte_num']
+				self.coordinates(units_num=units_num,room_number=room_number,longitude=longitude,latitude=latitude,filter_by_currency=filter_by_currency,order_by_num=order_by_num,locale_num=locale_num,checkout_date=checkout_date,children_number=children_number,page_number=page_number,children_ages=children_ages,categories_filte_num=categories_filte_num)
+
+			elif (sub=="Search_hotels"):
+				checkin_date = paramete['checkin_date']
+				units_num = paramete['paramete']
+				checkout_date = paramete['checkout_date']
+				adults_number = paramete['adults_number']
+				order_by = paramete['order_by']
+				dest_id = paramete['dest_id']
+				filter_by_currency = paramete['filter_by_currency']
+				locale = paramete['locale']
+				categories_filter_ids=paramete['categories_filter_ids']
+				page_number = paramete['page_number']
+				self.Search_hotels(checkin_date=checkin_date,units_num=units_num,adults_number=adults_number,order_by=order_by,dest_id=dest_id,filter_by_currency=filter_by_currency,locale=locale,categories_filter_ids=categories_filter_ids,page_number=page_number)
+				
+			
+			elif (sub=="locations"):
+				locale_num = paramete['locale_num']
+				name = paramete['name']
+				self.locations(locale_num=locale_num,name=name)
+
+		elif( main == "CarRent" ):
+
+			if(sub =="Search"):
+				locale_num = paramete['locale_num']
+				name = paramete['name']
+				self.Search(locale_num=locale_num,name=name)
+				
+
+			elif(sub == "rental"):
+				currency_num=paramete['currency_num']
+				drop_off_latitude = paramete['drop_off_latitude']
+				sort_by=paramete['sort_by']=sort_by
+				price_low_to_high=paramete['price_low_to_high']
+				drop_off_datetime=paramete['drop_off_datetime']
+				from_country_num=paramete['from_country_num']
+				pick_up_latitude=paramete['pick_up_latitude']
+				locale_num=paramete['locale_num']
+				pick_up_datetime=paramete['pick_up_datetime']
+				drop_off_longitude=paramete['drop_off_longitude']
+				pick_up_longitude=paramete['pick_up_longitude']
+				self.rental(currency_num=currency_num,drop_off_latitude=drop_off_latitude,sort_by=sort_by,price_low_to_high=price_low_to_high,drop_off_datetime=drop_off_datetime,from_country_num=from_country_num,pick_up_latitude=pick_up_latitude,locale_num=locale_num,pick_up_datetime=pick_up_datetime,drop_off_longitude=drop_off_longitude,pick_up_longitude=pick_up_longitude)
+
+			elif(sub == "supplier_details"):
+				from_country_num = paramete['from_country_num']
+				locale_num = paramete['locale_num']
+				self.supplier_details(from_country_num=from_country_num,locale_num=locale_num)
+				pass
+
+			elif(sub == "Reviews_about_vehicles"):
+				locale_num = paramete['locale_num']
+				location_id = paramete['location_id']
+				from_country_num = paramete['from_country_num']
+				self.Reviews_about_vehicles(locale_num=locale_num,location_id=location_id,from_country_num=from_country_num)
+				
+			elif(sub == "Rental_terms"):
+				from_country = paramete['from_country']
+				pick_up_location_id = paramete['pick_up_location_id']
+				locale_num = paramete['locale_num']
+				self.Rental_terms(from_country=from_country,pick_up_location_id=pick_up_location_id,locale_num=locale_num)
+
+		elif(main == "ListData"):
+			pass
+			if(sub=="Hotels"):
+				page=paramete['page']
+				city_id=paramete['city_id']
+				slug=paramete['slug']
+				region_id=paramete['region_id']
+				country=paramete['country']
+				exact_class=paramete['exact_class']
+				zip_code=paramete['zip_code']
+				hotel_type_id=paramete['hotel_type_id']
+				district_id=paramete['district_id']
+				name=paramete['name']
+				self.Hotels(page=page,city_id=city_id,slug=slug,region_id=region_id,country=country,exact_class=exact_class,hotel_id=hotel_id,zip_code=zip_code,hotel_type_id=hotel_type_id,district_id=district_id)
+			
+	
 
 
-
-class urlhandle(urlhandel):
+class handle(queryhandle,Datahandel):
 	def url(self,main,sub):
 		config_run = config.main()
-		config_url = urlhandel()
+		config_url = Datahandel()
 		data=config_url._set(main,sub)
 		config_run.run(data='booking', dmain=data['main'], sub=data['sub'])
 		return config_run.url,config_run.header
+	def query(self,main,sub,paramete):
+		self.run(main,sub,paramete)
+		pass
 
+x = handle()
+w=x.query(main="Hotels",sub="Data_hotel",paramete={
+			'hotel_id':'12345',
+			'locale_num':1
+		})
 
-x = urlhandle()
-w,y=x.url(main='Hotels',sub='locations')
-print(w)
+y= query()
+print(y.params)
