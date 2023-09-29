@@ -355,15 +355,18 @@ class handle(queryhandle,Datahandel):
 		data=config_url._set(main,sub)
 		config_run.run(data='booking', dmain=data['main'], sub=data['sub'])
 		return config_run.url,config_run.header
+	
+
+
 	def query(self,main,sub,paramete):
 		self.run(main,sub,paramete)
 		pass
 
-x = handle()
-w=x.query(main="Hotels",sub="Data_hotel",paramete={
-			'hotel_id':'12345',
-			'locale_num':1
-		})
+# x = handle()
+# w=x.query(main="Hotels",sub="Data_hotel",paramete={
+# 			'hotel_id':'12345',
+# 			'locale_num':1
+# 		})
 
-y= query()
-print(y.params)
+# y= query()
+# print(y.params)
