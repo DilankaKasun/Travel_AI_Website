@@ -1,10 +1,18 @@
 import os
 import openai
 import config
+import jsonHandle
+
+
+class AI_Handle():
+    def required(self):
+      storege_data= jsonHandle.Handle()
+      x=storege_data.read()
+
+      pass
 
 
 openai.api_key = config.OpenAi.OPENAI_API_KEY
-
 response = openai.ChatCompletion.create(
   model="gpt-3.5-turbo",
   messages=[
@@ -44,4 +52,4 @@ response = openai.ChatCompletion.create(
   presence_penalty=0
 )
 
-print(response['choices'][0]['message']['content'])
+print(response['choices'][0])
