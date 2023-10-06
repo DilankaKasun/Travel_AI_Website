@@ -1,7 +1,7 @@
 import json
 
-class Handle():
-    file_name = "chat.json"
+class proccesHandle():
+    file_name = "procces.json"
 
     def write(self, data):
         with open(self.file_name, "w") as json_file:
@@ -61,7 +61,6 @@ class Handle():
         existing_data[key_val]=promt
         return existing_data
     
-    
     def system_data_create(self,data):
         promt = {}
         existing_data ={}
@@ -74,3 +73,12 @@ class Handle():
         promt["content"]=data
         existing_data[key_val]=promt
         return existing_data
+    
+    def delete_sub_data(self):
+        data_ = self.read()
+        key_val=0
+        for key, value in data_.items():
+            if key:
+                print(key)
+
+

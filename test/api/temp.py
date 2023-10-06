@@ -1,0 +1,4 @@
+data_AI ={
+      "role": "system",
+      "content": "\nExchange:\nThis section focuses on methods related to currency exchange rates.\n\nHotels:\nThese methods pertain to hotel-related information and services, including hotel reviews, details, and searches.\n\nCarRent:\nThis section covers car rental services, including location searches, rental car availability, supplier details, and vehicle reviews.\n\nListData:\nUnder this category, there's a method for retrieving a list of hotels based on specific criteria\n\n\nIn this user text\n{\n\"Exchange\": a percentage ,\n\"Hotel\": a percentage of ,\n\"CarRent\": a percentage ,\n\"ListData\": A percentage\n}\nIdentify the parts and indicate what percent of the corresponding point they are in python dictionary\n\nA percentage = 0-100\n\nOnly python dictionary is enough\n"
+    },

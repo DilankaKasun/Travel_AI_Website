@@ -26,7 +26,7 @@ class config(API_Data):
     def sky_scrapper_com(self, dmain, sub):
         self._key("sky_scrapper", dmain, sub)
 class OpenAi():
-    OPENAI_API_KEY = "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"
+    OPENAI_API_KEY = "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"
         
     # end def      
 

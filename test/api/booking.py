@@ -357,16 +357,19 @@ class handle(queryhandle,Datahandel):
 		return config_run.url,config_run.header
 	
 
-
 	def query(self,main,sub,paramete):
 		self.run(main,sub,paramete)
 		pass
 
-# x = handle()
-# w=x.query(main="Hotels",sub="Data_hotel",paramete={
-# 			'hotel_id':'12345',
-# 			'locale_num':1
-# 		})
+class API (handle):
+	def run(self,main,sub,par):
+		handleAPI = handle()
+		handleAPI.query(main=main,sub=sub,paramete=par)
+		queryAPI = query()
+		urlAPI,reqAPI=handleAPI.url(main=main,sub=sub)
+		return queryAPI.params,urlAPI[0],reqAPI
 
-# y= query()
-# print(y.params)
+	def respons_(self,main,sub,par):
+		querystring,url,headers=self.run(main=main,sub=sub,par=par)
+		response = requests.get(url, headers=headers, params=querystring)
+		return	response.json()
