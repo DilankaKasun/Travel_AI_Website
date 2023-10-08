@@ -94,7 +94,7 @@ class AI_handle_data():
     def select_function(self, _asssistan):
       Data = _asssistan['message']['content']
       out_KEY = None
-      print(self.print_json_structure(data=Data))
+      return self.print_json_structure(data=Data)
 
 
 
@@ -152,16 +152,53 @@ class AI_response(AI_required,AI_handle_data):
        API = booking.API()
        assiten = resp['message']
        if assiten: 
-        
         self.user_sub_promt(assiten['content'])
         sub_repons=self.sub_required()
         if sub_repons!={}:
           self.AI_sub_promt(use_data=sub_repons['message'])
           # # print(self.select_function(_asssistan=sub_repons))
           # req_ai_data = self.required_sub_data()[-1]["content"]   
-          return self.select_function(_asssistan=sub_repons)
-             
-             
+          select_function=self.select_function(_asssistan=sub_repons)
+          if select_function:
+            for key,val in select_function.items():
+              for key_sub,val_sub in val.items():
+                 if  int(val_sub)>50:
+                    if "Hotels" ==  key:   
+                      if "Search_hotels"==key_sub:
+                        pass
+                      elif "locations"==key_sub:
+                        pass
+                      elif "Data_hotel"==key_sub:
+                        pass
+                      elif "Reviews_hotel"==key_sub:
+                        pass
+                      elif "Description_hotel"==key_sub:
+                        pass
+                      elif "Review_scores"==key_sub:
+                        pass
+                      elif "coordinates"==key_sub:
+                        pass
+                    elif "CarRent" ==key:
+                      if "Search"==key_sub:
+                        pass
+                      elif "rental"==key_sub:
+                        pass
+                      elif "supplier_details"==key_sub:
+                        pass
+                      elif "Reviews_hotel"==key_sub:
+                        pass
+                      elif "Reviews_about_vehicles"==key_sub:
+                        pass
+                      elif "Rental_terms"==key_sub:
+                        pass
+                    elif "ListData" ==key:
+                      #  Hotels
+                      if "Hotels"==key_sub:
+                        pass
+
+                       
+                         
+                    
           
           
     
