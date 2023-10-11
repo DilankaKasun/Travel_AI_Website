@@ -1,0 +1,108 @@
+
+{
+
+"user_text":"talle me assistant",
+"API":{
+    "map":["API DATA"]
+}
+
+}
+
+
+
+
+{
+        "user_text":"text assistant",
+        "Planning": {
+            "Travel Itinerary": {
+                "Activities": "Plan and schedule your activities.",
+                "Accommodations": "Decide on lodging options.",
+                "Transportation": "Arrange transportation modes.",
+                "Goals": "Define your travel goals and objectives."
+            },
+            "Accommodation": {
+                "Budget": "Set your accommodation budget.",
+                "Preferences": "Specify comfort and location preferences."
+            },
+            "Transportation": {
+                "Flights": "Book flights in advance.",
+                "Trains": "Consider train travel options.",
+                "RentalCars": "Arrange rental cars if needed.",
+                "other":"get to other option"
+            },
+            "Travel Insurance": {
+                "Emergencies": "Coverage for medical emergencies.",
+                "Cancellations": "Protection against trip cancellations."
+            },
+            "Local Currency and Finances": {
+                "Currency Exchange": {"Be aware of local currency and exchange rates."},
+                "Financial Planning": {"Create a financial plan for your trip."}
+            },
+    
+        
+            "Weather and Climate": "Pack clothing appropriate for the destination's weather and climate."
+        
+        "Cross-Cultural Awareness": {
+            "Time Zone Changes": "Adapt to time zone differences and manage jet lag effectively.",
+            "Cultural Sensitivity": "Show respect for local customs, traditions, and norms.",
+            "Sustainability and Responsible Travel": "Minimize environmental impact and support local communities."
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+{
+"user_text":"talle me assistant",
+"API":{
+    "map":{
+    "google_map_business":
+{
+    "Search":
+    {
+    //The parameter to be given
+    "query":"Enter the type of business to find",
+    "limit":"Enter the required information number,Maximum number of businesses to return (1-500).",
+    "lat":"Enter the longitude of the location where the information is to be obtained,Latitude of the coordinates point from which the query is applied - recommended to use so that results are biased towards this location. Defaults to some central location in the region (see the region parameter).",
+    "lng":"Enter the longitude of the latitude where the information is to be obtained,Longitude of the coordinates point from which the query is applied - recommended to use so that results are biased towards this location. Defaults to some central location in the region (see the region parameter).",
+    "zoom":"Enter the Zoom level on which to make the search (the viewport is determined by lat, lng and zoom). Default: 13",
+    "language":"Enter the Set the language of the results. For a list of supported language codes see https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes .Default: en",
+    "region":"Enter the Query Google Maps from a particular region or country. For a list of supported region/country codes see https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes (Alpha-2 code).Default: us"
+    },
+    //The parameter to be given
+    "Search_In_Area":{
+    "query":"Enter the type of business to find",
+    "limit":"Enter the required information number,Maximum number of businesses to return (1-500).",
+    "lat":"Enter the longitude of the location where the information is to be obtained,Latitude of the coordinates point from which the query is applied - recommended to use so that results are biased towards this location. Defaults to some central location in the region (see the region parameter).",
+    "lng":"Enter the longitude of the latitude where the information is to be obtained,Longitude of the coordinates point from which the query is applied - recommended to use so that results are biased towards this location. Defaults to some central location in the region (see the region parameter).",
+    "zoom":"Enter the Zoom level on which to make the search (the viewport is determined by lat, lng and zoom). Default: 13",
+    }
+
+},
+"google_Map_Geocoding":{
+    "Get_Data_Address":{
+        //The parameter to be given
+        "address":"Enter the address where required"
+
+    }
+},
+"google_map_routes":{
+    "FindDrivingRoute":{
+        "stops":"Enter the Specify two or more semicolon-delimited locations(Lat/Lng) between which the route is to be found. Max: 25"
+    }
+}
+
+}
+    }
+}
+
+
+
+
+

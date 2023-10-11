@@ -1,0 +1,65 @@
+{
+    "0": {
+        "role": "system",
+        "content": "\n**User Input:**\n- The user provides input text.\n\n**Categories and Methods:**\n- There are several categories, each containing multiple methods or sub-methods.\n- Categories include: \"Exchange,\" \"Hotels,\" \"CarRent,\" and \"ListData.\"\n- Methods within \"Hotels\" include: \"Data_hotel,\" \"Reviews_hotel,\" \"Description_hotel,\" \"Review_scores,\" \"coordinates,\" \"Search_hotels,\" and \"locations.\"\n- Methods within \"CarRent\" include: \"Search,\" \"rental,\" \"supplier_details,\" \"Reviews_about_vehicles,\" and \"Rental_terms.\"\n- \"ListData\" has one method: \"Hotels.\"\n\n**Output Format:**\n- The goal is to provide a percentage relevance score for each method or sub-method based on the user input.\n- The output is structured as a dictionary.\n\n```json\n{\n    \"Hotels\": {\n        \"Search_hotels\": percentage,\n        \"locations\": percentage,\n        \"Data_hotel\": percentage,\n        \"Reviews_hotel\": percentage,\n        \"Description_hotel\": percentage,\n        \"Review_scores\": percentage,\n        \"coordinates\": percentage\n    },\n    \"CarRent\": {\n        \"Search\": percentage,\n        \"rental\": percentage,\n        \"supplier_details\": percentage,\n        \"Reviews_about_vehicles\": 0,\n        \"Rental_terms\": percentage\n    },\n    \"ListData\": {\n        \"Hotels\": percentage\n    },\n    \"Exchange\": percentage\n}\n```\n\n**Calculation of Percentages:**\n- To calculate the percentage relevance of a method or sub-method, use the OpenAI API (e.g., GPT-3) to rank the methods based on the user input.\n- The percentage is determined by the API's confidence score, scaled to fit within the range of 1 to 100.\n\n**Goods and Services Consideration:**\n- If the user input mentions \"Goods and services,\" increase the percentage for the \"Exchange\" method by a certain amount (e.g., +10%) to account for potential relevance.\n\n**Missing Categories and Methods:**\n- Ensure that all categories and sub-methods are present in the output dictionary, even if their relevance percentage is 0.\n- This ensures that the output is comprehensive and includes all possible methods.\n\nBy following this approach, you can generate the desired output format with relevant percentage scores for each method based on user input."
+    },
+    "1": {
+        "role": "user",
+        "content": "I want a hotel to stay in Galle"
+    },
+    "2": {
+        "role": "assistant",
+        "content": "{\n    \"Hotels\": {\n        \"Search_hotels\": 100,\n        \"locations\": 100,\n        \"Data_hotel\": 0,\n        \"Reviews_hotel\": 0,\n        \"Description_hotel\": 0,\n        \"Review_scores\": 0,\n        \"coordinates\": 0\n    },\n    \"CarRent\": {\n        \"Search\": 0,\n        \"rental\": 0,\n        \"supplier_details\": 0,\n        \"Reviews_about_vehicles\": 0,\n        \"Rental_terms\": 0\n    },\n    \"ListData\": {\n        \"Hotels\": 0\n    },\n    \"Exchange\": 0\n}"
+    },
+    "3": {
+        "role": "user",
+        "content": "Of course! I can provide you with travel information for your trip to Galle. Here's what I need to know:\n\n1. Where are you currently located?\n2. How do you plan to travel to Galle? (By air, train, bus, car?)\n3. Do you have any specific dates in mind for your trip to Galle?\n4. Would you like to know about any specific attractions or activities in Galle?\n\nOnce I have this information, I'll be able to give you detailed travel information, including transportation options, accommodation recommendations, and things to do in Galle."
+    },
+    "4": {
+        "role": "assistant",
+        "content": "{\n    \"Hotels\": {\n        \"Search_hotels\": 100,\n        \"locations\": 100,\n        \"Data_hotel\": 0,\n        \"Reviews_hotel\": 0,\n        \"Description_hotel\": 0,\n        \"Review_scores\": 0,\n        \"coordinates\": 0\n    },\n    \"CarRent\": {\n        \"Search\": 0,\n        \"rental\": 0,\n        \"supplier_details\": 0,\n        \"Reviews_about_vehicles\": 0,\n        \"Rental_terms\": 0\n    },\n    \"ListData\": {\n        \"Hotels\": 0\n    },\n    \"Exchange\": 0\n}"
+    },
+    "5": {
+        "role": "user",
+        "content": "That's great! Traveling by car gives you the flexibility and convenience to explore different places at your own pace. Can you please provide me with your current location and the destination you want to reach in Kandy?"
+    },
+    "6": {
+        "role": "assistant",
+        "content": "{\n    \"Hotels\": {\n        \"Search_hotels\": 0,\n        \"locations\": 100,\n        \"Data_hotel\": 0,\n        \"Reviews_hotel\": 0,\n        \"Description_hotel\": 0,\n        \"Review_scores\": 0,\n        \"coordinates\": 0\n    },\n    \"CarRent\": {\n        \"Search\": 100,\n        \"rental\": 0,\n        \"supplier_details\": 0,\n        \"Reviews_about_vehicles\": 0,\n        \"Rental_terms\": 0\n    },\n    \"ListData\": {\n        \"Hotels\": 0\n    },\n    \"Exchange\": 0\n}"
+    },
+    "7": {
+        "role": "user",
+        "content": "Got it. You want to travel to Galle with your mother. May I know your current location?"
+    },
+    "8": {
+        "role": "assistant",
+        "content": "{\n    \"Hotels\": {\n        \"Search_hotels\": 0,\n        \"locations\": 100,\n        \"Data_hotel\": 0,\n        \"Reviews_hotel\": 0,\n        \"Description_hotel\": 0,\n        \"Review_scores\": 0,\n        \"coordinates\": 0\n    },\n    \"CarRent\": {\n        \"Search\": 0,\n        \"rental\": 0,\n        \"supplier_details\": 0,\n        \"Reviews_about_vehicles\": 0,\n        \"Rental_terms\": 0\n    },\n    \"ListData\": {\n        \"Hotels\": 0\n    },\n    \"Exchange\": 0\n}"
+    },
+    "9": {
+        "role": "user",
+        "content": "Sure! To travel to Galle by car, you need to first plan your route. Can you please provide me with your current location so that I can help you with the directions?"
+    },
+    "10": {
+        "role": "assistant",
+        "content": "{\n    \"Hotels\": {\n        \"Search_hotels\": 0,\n        \"locations\": 100,\n        \"Data_hotel\": 0,\n        \"Reviews_hotel\": 0,\n        \"Description_hotel\": 0,\n        \"Review_scores\": 0,\n        \"coordinates\": 0\n    },\n    \"CarRent\": {\n        \"Search\": 100,\n        \"rental\": 0,\n        \"supplier_details\": 0,\n        \"Reviews_about_vehicles\": 0,\n        \"Rental_terms\": 0\n    },\n    \"ListData\": {\n        \"Hotels\": 0\n    },\n    \"Exchange\": 0\n}"
+    },
+    "11": {
+        "role": "user",
+        "content": "Got it. To travel to Galle by car, you need to first plan your route. Can you please provide me with your current location?"
+    },
+    "12": {
+        "role": "assistant",
+        "content": "{\n    \"Hotels\": {\n        \"Search_hotels\": 0,\n        \"locations\": 100,\n        \"Data_hotel\": 0,\n        \"Reviews_hotel\": 0,\n        \"Description_hotel\": 0,\n        \"Review_scores\": 0,\n        \"coordinates\": 0\n    },\n    \"CarRent\": {\n        \"Search\": 100,\n        \"rental\": 0,\n        \"supplier_details\": 0,\n        \"Reviews_about_vehicles\": 0,\n        \"Rental_terms\": 0\n    },\n    \"ListData\": {\n        \"Hotels\": 0\n    },\n    \"Exchange\": 0\n}"
+    },
+    "13": {
+        "role": "user",
+        "content": "Sorry, but I'm not able to execute code or access files on your computer. However, I can help you with travel-related information. If you have any questions about traveling to Galle by car, feel free to ask!"
+    },
+    "14": {
+        "role": "assistant",
+        "content": "{\n    \"Hotels\": {\n        \"Search_hotels\": 0,\n        \"locations\": 0,\n        \"Data_hotel\": 0,\n        \"Reviews_hotel\": 0,\n        \"Description_hotel\": 0,\n        \"Review_scores\": 0,\n        \"coordinates\": 0\n    },\n    \"CarRent\": {\n        \"Search\": 100,\n        \"rental\": 0,\n        \"supplier_details\": 0,\n        \"Reviews_about_vehicles\": 0,\n        \"Rental_terms\": 0\n    },\n    \"ListData\": {\n        \"Hotels\": 0\n    },\n    \"Exchange\": 0\n}"
+    }
+
+}
+
+

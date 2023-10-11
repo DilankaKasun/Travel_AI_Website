@@ -5,86 +5,126 @@
     },
     "1": {
         "role": "user",
-        "content": "i need to galle whith father"
+        "content": "i need to trivel galle"
     },
     "2": {
         "role": "assistant",
-        "content": "That sounds like a wonderful plan! Galle is a beautiful city in Sri Lanka known for its historic fort and stunning beaches. When are you planning to travel to Galle with your father?"
+        "content": "Sure! I can help you with that. Can you please provide me with some more details? Specifically, I need to know your current location and your preferred method of travel."
     },
     "3": {
         "role": "user",
-        "content": "i need go kandy"
+        "content": "i need trivel galle and booking hotel in galle"
     },
     "4": {
-        "role": "user",
-        "content": "& C:/Python311/python.exe c:/Users/Code/project/whatsappAPI/Travel_AI_Website/test/api/openAI.py"
+        "role": "assistant",
+        "content": "Great! To assist you with your travel to Galle and booking a hotel, I will need a few more details from you. \n\n1. Can you please let me know your current location? This will help me provide you with information on how to travel from your current location to Galle.\n\n2. When do you plan to travel to Galle? Knowing your travel dates will help me find the best hotel options for you.\n\nOnce I have these details, I will provide you with information on travel options and hotel recommendations in Galle."
     },
     "5": {
         "role": "user",
-        "content": "i need trivel by my car"
+        "content": "i need trivel galle"
     },
     "6": {
         "role": "assistant",
-        "content": "That's great! Traveling by car gives you the flexibility and convenience to explore different places at your own pace. Can you please provide me with your current location and the destination you want to reach in Kandy?"
+        "content": "Certainly! To begin planning your trip to Galle, I would need to know your current location. Could you please provide me with your current location? With that information, I can assist you in exploring the travel options available to reach Galle."
     },
     "7": {
         "role": "user",
-        "content": "i need trivel galle my mother "
+        "content": "i need trivel kanday"
     },
     "8": {
         "role": "assistant",
-        "content": "Got it. You want to travel to Galle with your mother. May I know your current location?"
+        "content": "Great! I can assist you with your travel to Kandy. May I know your current location? This will help me provide you with information on how to travel from your current location to Kandy."
     },
     "9": {
         "role": "user",
-        "content": "i need trivel galle in car"
+        "content": "i need travel kandy "
     },
     "10": {
-        "role": "user",
-        "content": "i need trivel galle in car"
+        "role": "assistant",
+        "content": "Sure! I can help you with your travel to Kandy. To provide you with the most accurate information, could you please let me know your current location? This will help me assist you with the best travel options to reach Kandy."
     },
     "11": {
-        "role": "assistant",
-        "content": "Sure! To travel to Galle by car, you need to first plan your route. Can you please provide me with your current location so that I can help you with the directions?"
+        "role": "user",
+        "content": "i need trivel sri lanka in kandy"
     },
     "12": {
-        "role": "user",
-        "content": "i need galle in car"
+        "role": "assistant",
+        "content": "Wonderful! Sri Lanka is a beautiful country, and Kandy is a popular destination to visit. To assist you with your travel to Sri Lanka, I would need a few more details:\n\n1. Could you please inform me of your travel dates? This will help me provide you with information on the best time to visit and any seasonal considerations.\n\n2. Do you have a specific duration in mind for your trip to Kandy? Knowing the length of your stay will help me suggest appropriate itinerary options.\n\nOnce I have these details, I can provide you with valuable information and tips for your travel to Kandy, Sri Lanka."
     },
     "13": {
-        "role": "assistant",
-        "content": "Got it. To travel to Galle by car, you need to first plan your route. Can you please provide me with your current location?"
+        "role": "user",
+        "content": "i need trivel sri lanka in kandy"
     },
     "14": {
         "role": "user",
-        "content": "& C:/Python311/python.exe c:/Users/Code/project/whatsappAPI/Travel_AI_Website/test/api/openAI.py"
+        "content": "continue"
     },
     "15": {
-        "role": "assistant",
-        "content": "Sorry, but I'm not able to execute code or access files on your computer. However, I can help you with travel-related information. If you have any questions about traveling to Galle by car, feel free to ask!"
+        "role": "user",
+        "content": "i need trivel galle"
     },
     "16": {
-        "role": "user",
-        "content": "& C:/Python311/python.exe c:/Users/Code/project/whatsappAPI/Travel_AI_Website/test/api/openAI.py"
+        "role": "assistant",
+        "content": "Certainly! I can assist you with your travel to Galle. Here is some information to help you plan your trip:\n\n1. Travel Method: Galle is located on the southern coast of Sri Lanka. If you are already in Sri Lanka, you have several transportation options to reach Galle. The most common ways to travel to Galle are by train, bus, or private vehicle.\n\n2. Distance and Travel Duration: Galle is approximately 119 kilometers (74 miles) away from the capital city of Colombo. The travel duration can vary depending on the mode of transportation you choose. By train, the journey takes around 2-3 hours, by bus, it takes about 3-4 hours, and by private vehicle, it takes approximately 2-3 hours depending on traffic conditions.\n\n3. Route Details: The most scenic and popular route to Galle is along the coastal road, which offers breathtaking views of the ocean. The Southern Expressway is another option for faster travel, but it is a toll road.\n\nNow, if you could please provide me with your current location and your preferred method of travel, I can provide you with more specific details and recommendations for your journey to Galle."
     },
     "17": {
-        "role": "assistant",
-        "content": "I apologize for any confusion, but I'm unable to execute code on your computer. I'm here to provide you with information and answer any questions you may have about travel. If there's something specific you'd like to know or discuss, please let me know and I'll be happy to assist you."
+        "role": "user",
+        "content": "i need trivel sri lanka in galle and booking hotel"
     },
     "18": {
         "role": "user",
-        "content": "i need galle in car"
+        "content": "continue"
     },
     "19": {
         "role": "assistant",
-        "content": "Certainly! If you're planning to travel to Galle by car, here's some information to help you:\n\n- The distance between your current location and Galle will depend on where you're starting from. Can you please provide me with your current location?\n- The estimated travel duration will also vary depending on the route you choose and the traffic conditions. It's always a good idea to check for any potential road closures or construction work that might affect your journey.\n- For the best route options and real-time traffic updates, I recommend using navigation apps like Google Maps or Waze. They will provide you with turn-by-turn directions and help you navigate through the most efficient routes.\n\nOnce you provide me with your current location, I can give you more specific information about the distance, estimated travel duration, and route details."
+        "content": "Of course! I can assist you with your travel to Sri Lanka and booking a hotel in Galle. Here are the steps we can follow:\n\n1. Travel Method: To travel to Galle, you have several options. You can either take a flight to Bandaranaike International Airport in Colombo and then proceed to Galle by train, bus, or private vehicle. Alternatively, you can also consider taking a domestic flight to Koggala Airport, which is closer to Galle. Please let me know your preferred travel method, and I can provide you with more details on that specific option.\n\n2. Distance and Estimated Travel Duration: The distance between Colombo and Galle is approximately 119 kilometers (74 miles). Travel duration can vary depending on the mode of transportation you choose. By train, it takes around 2-3 hours, by bus, it takes about 3-4 hours, and by private vehicle, it takes approximately 2-3 hours depending on traffic conditions.\n\n3. Route Details: The most common route to Galle is along the coastal road, which offers scenic views of the ocean. If you are taking the train from Colombo to Galle, it is a picturesque journey along the coast. Buses also operate regularly between Col"
     },
     "20": {
         "role": "user",
-        "content": "i need trevel galle"
+        "content": "continue"
     },
     "21": {
         "role": "assistant",
-        "content": "Got it! If you're planning to travel to Galle, there are a few details I would need to know in order to provide you with accurate information:\n\n1. What is your current location? This will help me determine the distance and route to Galle.\n2. Are you planning to drive your own car or rent one?\n3. Do you have any specific requirements or preferences for the route? For example, do you prefer the fastest route or a more scenic route?\n\nOnce I have this information, I'll be able to assist you further with your travel to Galle."
+        "content": "i need trivel sri lanka in galle and booking hotel"
+    },
+    "22": {
+        "role": "user",
+        "content": "i need trivel galle"
+    },
+    "23": {
+        "role": "assistant",
+        "content": "Got it! To assist you with your travel to Galle, I would need some more details from you. Specifically:\n\n1. Current Location: May I know your current location? This will help me provide you with information on how to travel from your current location to Galle.\n\n2. Travel Method: How do you prefer to travel to Galle? Are you considering taking a flight, train, bus, or private vehicle? \n\nOnce I have this information, I can provide you with more specific details and recommendations for your trip to Galle."
+    },
+    "24": {
+        "role": "user",
+        "content": "i need travel kandy in sri lanka"
+    },
+    "25": {
+        "role": "assistant",
+        "content": "Great! To plan your travel to Kandy in Sri Lanka, I will require some additional information. \n\n1. Current Location: Could you please provide me with your current location? This will allow me to suggest the best travel options to reach Kandy from where you are.\n\n2. Preferred Travel Method: How do you wish to travel to Kandy? Are you considering taking a flight, train, bus, or private vehicle? Knowing your preferred mode of transportation will help me provide you with relevant details and recommendations.\n\nOnce I have these details, I can guide you further on how to travel to Kandy and provide you with additional information such as travel duration, route details, and any other necessary information."
+    },
+    "26": {
+        "role": "user",
+        "content": "i need trivel kandy in sri lanka"
+    },
+    "27": {
+        "role": "assistant",
+        "content": "Certainly! I can assist you with your travel to Kandy in Sri Lanka. To provide you with the best information, I will need a few more details:\n\n1. Current Location: Can you please let me know your current location? This will help me provide you with information on how to travel from your current location to Kandy.\n\n2. Travel Dates: When do you plan on traveling to Kandy? Knowing your travel dates will help me provide you with information on the best time to visit and any seasonal considerations.\n\nOnce I have these details, I can provide you with valuable information and tips for your travel to Kandy, Sri Lanka."
+    },
+    "28": {
+        "role": "user",
+        "content": "i need travel kandy in sri lanka"
+    },
+    "29": {
+        "role": "assistant",
+        "content": "Great! I can assist you with your travel to Kandy in Sri Lanka. To provide you with the most accurate information, could you please let me know your current location? This will help me suggest the best travel options to reach Kandy from your location.\n\nAdditionally, if you have any specific travel dates or preferences in mind, please let me know. This will help me provide you with more personalized recommendations for your trip to Kandy.\n\nOnce I have these details, I can provide you with information on transportation options, attractions to visit in Kandy, and any other details you may need for your travel."
+    },
+    "30": {
+        "role": "user",
+        "content": "i need travel kandy in sri lanka"
+    },
+    "31": {
+        "role": "assistant",
+        "content": "Certainly! I can assist you with your travel to Kandy in Sri Lanka. To begin planning your trip, I will need some more information from you:\n\n1. Current Location: Please let me know your current location. This will help me provide you with information on the best way to reach Kandy from where you are.\n\n2. Travel Dates: Do you have specific dates in mind for your travel to Kandy? Knowing your travel dates will help me provide you with information on the weather conditions and any special events or festivals happening during your visit.\n\n3. Preferred Mode of Transport: How do you prefer to travel to Kandy? Are you considering taking a flight, train, bus, or private vehicle? Knowing your preferred mode of transport will allow me to provide you with specific details and recommendations.\n\nOnce I have these details, I can provide you with a customized travel plan, including information on transportation options, attractions to visit in Kandy, and any other details you may need for your trip."
     }
 }

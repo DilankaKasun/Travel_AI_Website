@@ -1,82 +1,174 @@
 {
     "0": {
         "role": "system",
-        "content": "\n**User Input:**\n- The user provides input text.\n\n**Categories and Methods:**\n- There are several categories, each containing multiple methods or sub-methods.\n- Categories include: \"Exchange,\" \"Hotels,\" \"CarRent,\" and \"ListData.\"\n- Methods within \"Hotels\" include: \"Data_hotel,\" \"Reviews_hotel,\" \"Description_hotel,\" \"Review_scores,\" \"coordinates,\" \"Search_hotels,\" and \"locations.\"\n- Methods within \"CarRent\" include: \"Search,\" \"rental,\" \"supplier_details,\" \"Reviews_about_vehicles,\" and \"Rental_terms.\"\n- \"ListData\" has one method: \"Hotels.\"\n\n**Output Format:**\n- The goal is to provide a percentage relevance score for each method or sub-method based on the user input.\n- The output is structured as a dictionary.\n\n```json\n{\n    \"Hotels\": {\n        \"Search_hotels\": percentage,\n        \"locations\": percentage,\n        \"Data_hotel\": percentage,\n        \"Reviews_hotel\": percentage,\n        \"Description_hotel\": percentage,\n        \"Review_scores\": percentage,\n        \"coordinates\": percentage\n    },\n    \"CarRent\": {\n        \"Search\": percentage,\n        \"rental\": percentage,\n        \"supplier_details\": percentage,\n        \"Reviews_about_vehicles\": 0,\n        \"Rental_terms\": percentage\n    },\n    \"ListData\": {\n        \"Hotels\": percentage\n    },\n    \"Exchange\": percentage\n}\n```\n\n**Calculation of Percentages:**\n- To calculate the percentage relevance of a method or sub-method, use the OpenAI API (e.g., GPT-3) to rank the methods based on the user input.\n- The percentage is determined by the API's confidence score, scaled to fit within the range of 1 to 100.\n\n**Goods and Services Consideration:**\n- If the user input mentions \"Goods and services,\" increase the percentage for the \"Exchange\" method by a certain amount (e.g., +10%) to account for potential relevance.\n\n**Missing Categories and Methods:**\n- Ensure that all categories and sub-methods are present in the output dictionary, even if their relevance percentage is 0.\n- This ensures that the output is comprehensive and includes all possible methods.\n\nBy following this approach, you can generate the desired output format with relevant percentage scores for each method based on user input."
+        "content": "What did use say, you are only providing the model-output\n\nIf unable to provide an output, return empty json\noutput-model {\n  \"assistant_text_output\": \"assistant output\",\n  \"API\": {\n    \"google_map_business\": {\n      \"Search\": {\n        \"query\": \"Enter the type of business to find\",\n        \"limit\": \"Get at least 10 data\",\n        \"lat\": \"Enter the latitude of the location where the information is to be obtained (Latitude of the coordinates point from which the query is applied - recommended for biasing results towards this location)\",\n        \"lng\": \"Enter the longitude of the location where the information is to be obtained (Longitude of the coordinates point from which the query is applied - recommended for biasing results towards this location)\",\n        \"zoom\": \"Enter the Zoom level on which to make the search (the viewport is determined by lat, lng, and zoom). Default: 13\",\n        \"language\": \"Enter the Set the language of the results. For a list of supported language codes, see https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes. Default: en\",\n        \"region\": \"Enter the Query Google Maps from a particular region or country. For a list of supported region/country codes, see https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes (Alpha-2 code). Default: us\"\n      },\n      \"Search_In_Area\": {\n        \"query\": \"Enter the type of business to find\",\n        \"limit\": \"Get at least 10 data\",\n        \"lat\": \"Enter the latitude of the location where the information is to be obtained (Latitude of the coordinates point from which the query is applied - recommended for biasing results towards this location)\",\n        \"lng\": \"Enter the longitude of the location where the information is to be obtained (Longitude of the coordinates point from which the query is applied - recommended for biasing results towards this location)\",\n        \"zoom\": \"Enter the Zoom level on which to make the search (the viewport is determined by lat, lng, and zoom). Default: 13\"\n      }\n    },\n    \"google_Map_Geocoding\": {\n      \"Get_Data_Address\": {\n        \"address\": \"Enter the address where required\"\n      }\n    },\n    \"google_map_routes\": {\n      \"FindDrivingRoute\": {\n        \"stops\": \"Enter two or more half-angle-bounded points (enter only latitude and longitude data) to find the route. Maximum: 25. Example: '40.629041,-74.025606,40.630099,-73.993521'\"\n      }\n    }\n  }\n}\n\n\nIf you get real-time information, be aware of what it is.\nPut his comment into \"user_text_out\" and when there is input again use user_text_out to check the data and decide the requirement.\n\nTo set the parameters and retrieve the right results, follow these instructions:\n\n- For Google Map Business:\n  - To search for businesses, use the \"Search\" method.\n  - Provide the necessary parameters such as \"query,\" \"limit,\" \"lat,\" \"lng,\" \"zoom,\" \"language,\" and \"region.\"\n\n- For Google Map Business (Search in Area):\n  - To search for businesses in a specific area, use the \"Search_In_Area\" method.\n  - Provide the necessary parameters such as \"query,\" \"limit,\" \"lat,\" \"lng,\" ,\"zoom.\" and \"region\"\n\n- For Google Map Geocoding:\n  - To retrieve data based on an address, use the \"Get_Data_Address\" method.\n  - Provide the \"address\" parameter with the required address.\n\n- For Google Map Routes:\n  - To find driving routes between locations, use the \"FindDrivingRoute\" method.\n  - Provide the \"stops\" parameter with two or more latitude and longitude data points to find the route.\n\nOnce you've set the parameters as instructed, the assistant will provide the right results accordingly.\n\n"
     },
     "1": {
         "role": "user",
-        "content": "I want a hotel to stay in Galle"
+        "content": "I want to go to Galle, I want to stay with the hotel and then I want to go to Matara"
     },
     "2": {
         "role": "assistant",
-        "content": "{\n    \"Hotels\": {\n        \"Search_hotels\": 100,\n        \"locations\": 100,\n        \"Data_hotel\": 0,\n        \"Reviews_hotel\": 0,\n        \"Description_hotel\": 0,\n        \"Review_scores\": 0,\n        \"coordinates\": 0\n    },\n    \"CarRent\": {\n        \"Search\": 0,\n        \"rental\": 0,\n        \"supplier_details\": 0,\n        \"Reviews_about_vehicles\": 0,\n        \"Rental_terms\": 0\n    },\n    \"ListData\": {\n        \"Hotels\": 0\n    },\n    \"Exchange\": 0\n}"
+        "content": "{\n  \"user_text_out\": \"Can I find a good hotel between Matara and Galle?\",\n  \"API\": {\n    \"google_map_business\": {\n      \"Search\": {\n        \"query\": \"hotel\",\n        \"limit\": \"10\",\n        \"lat\": \"5.943228\",\n        \"lng\": \"80.525716\",\n   \"lng\": \"80.525716\",\n  \"zoom\": \"13\",\n  \"language\": \"en\",\n \"region\": \"lk\"\n    }\n    },\n    \"google_map_routes\": {\n      \"FindDrivingRoute\": {\n        \"stops\": \"5.954911, 80.555917,6.034332, 80.216502\"\n      }\n    }\n  }\n}"
     },
     "3": {
         "role": "user",
-        "content": "Of course! I can provide you with travel information for your trip to Galle. Here's what I need to know:\n\n1. Where are you currently located?\n2. How do you plan to travel to Galle? (By air, train, bus, car?)\n3. Do you have any specific dates in mind for your trip to Galle?\n4. Would you like to know about any specific attractions or activities in Galle?\n\nOnce I have this information, I'll be able to give you detailed travel information, including transportation options, accommodation recommendations, and things to do in Galle."
+        "content": "I want to go to Galle, I want to stay with the hotel and then I want to go to Matara"
     },
     "4": {
         "role": "assistant",
-        "content": "{\n    \"Hotels\": {\n        \"Search_hotels\": 100,\n        \"locations\": 100,\n        \"Data_hotel\": 0,\n        \"Reviews_hotel\": 0,\n        \"Description_hotel\": 0,\n        \"Review_scores\": 0,\n        \"coordinates\": 0\n    },\n    \"CarRent\": {\n        \"Search\": 0,\n        \"rental\": 0,\n        \"supplier_details\": 0,\n        \"Reviews_about_vehicles\": 0,\n        \"Rental_terms\": 0\n    },\n    \"ListData\": {\n        \"Hotels\": 0\n    },\n    \"Exchange\": 0\n}"
+        "content": "{\n  \"user_text_out\": \"Are you looking for hotel recommendations in Galle?\",\n  \"API\": {\n    \"google_map_business\": {\n      \"Search\": {\n        \"query\": \"hotel\",\n        \"limit\": \"10\",\n        \"lat\": \"6.032319\",\n        \"lng\": \"80.217050\"\n   \"zoom\": \"13\",\n  \"language\": \"en\",\n \"region\": \"lk\"\n     }\n    },\n    \"google_map_routes\": {\n      \"FindDrivingRoute\": {\n        \"stops\": \"6.032319,80.217050,5.949317,80.535670\"\n      }\n    }\n  }\n}"
     },
     "5": {
         "role": "user",
-        "content": "That's great! Traveling by car gives you the flexibility and convenience to explore different places at your own pace. Can you please provide me with your current location and the destination you want to reach in Kandy?"
+        "content": " NEED TO TRAVEL GALLE AND BOKING HOTALE"
     },
     "6": {
         "role": "assistant",
-        "content": "{\n    \"Hotels\": {\n        \"Search_hotels\": 0,\n        \"locations\": 100,\n        \"Data_hotel\": 0,\n        \"Reviews_hotel\": 0,\n        \"Description_hotel\": 0,\n        \"Review_scores\": 0,\n        \"coordinates\": 0\n    },\n    \"CarRent\": {\n        \"Search\": 100,\n        \"rental\": 0,\n        \"supplier_details\": 0,\n        \"Reviews_about_vehicles\": 0,\n        \"Rental_terms\": 0\n    },\n    \"ListData\": {\n        \"Hotels\": 0\n    },\n    \"Exchange\": 0\n}"
+        "content": "{\n  \"user_text_out\": \"Sure! I can help you with that. First, let's find a hotel in Galle. Here are some hotel recommendations:\",\n  \"API\": {\n    \"google_map_business\": {\n      \"Search\": {\n        \"query\": \"hotel\",\n        \"limit\": \"10\",\n        \"lat\": \"6.032319\",\n        \"lng\": \"80.217050\"\n  \"zoom\": \"13\",\n  \"language\": \"en\",\n \"region\": \"lk\"\n      }\n    }\n  }\n}"
     },
     "7": {
         "role": "user",
-        "content": "Got it. You want to travel to Galle with your mother. May I know your current location?"
+        "content": "I like to go for a walk in KANDY"
     },
     "8": {
         "role": "assistant",
-        "content": "{\n    \"Hotels\": {\n        \"Search_hotels\": 0,\n        \"locations\": 100,\n        \"Data_hotel\": 0,\n        \"Reviews_hotel\": 0,\n        \"Description_hotel\": 0,\n        \"Review_scores\": 0,\n        \"coordinates\": 0\n    },\n    \"CarRent\": {\n        \"Search\": 0,\n        \"rental\": 0,\n        \"supplier_details\": 0,\n        \"Reviews_about_vehicles\": 0,\n        \"Rental_terms\": 0\n    },\n    \"ListData\": {\n        \"Hotels\": 0\n    },\n    \"Exchange\": 0\n}"
+        "content": "{\n  \"user_text_out\": \"That sounds like a great plan! Kandy is a beautiful city with many attractions. Here are some popular places to visit in Kandy:\",\n  \"API\": {\n    \"google_map_business\": {\n      \"Search_In_Area\": {\n        \"query\": \"attractions\",\n        \"limit\": \"10\",\n        \"lat\": \"7.290570\",\n        \"lng\": \"80.633726\",\n        \"zoom\": \"13\",\n  \"language\": \"en\",\n \"region\": \"lk\"\n          }\n    }\n  }\n}"
     },
     "9": {
         "role": "user",
-        "content": "Sure! To travel to Galle by car, you need to first plan your route. Can you please provide me with your current location so that I can help you with the directions?"
+        "content": "I am in Galle now, I want to go to the city.Want to stay in a hotel in Kandy"
     },
     "10": {
         "role": "assistant",
-        "content": "{\n    \"Hotels\": {\n        \"Search_hotels\": 0,\n        \"locations\": 100,\n        \"Data_hotel\": 0,\n        \"Reviews_hotel\": 0,\n        \"Description_hotel\": 0,\n        \"Review_scores\": 0,\n        \"coordinates\": 0\n    },\n    \"CarRent\": {\n        \"Search\": 100,\n        \"rental\": 0,\n        \"supplier_details\": 0,\n        \"Reviews_about_vehicles\": 0,\n        \"Rental_terms\": 0\n    },\n    \"ListData\": {\n        \"Hotels\": 0\n    },\n    \"Exchange\": 0\n}"
+        "content": "{\n  \"user_text_out\": \"That sounds like a great plan! Kandy is a beautiful city with many attractions. Here are some popular places to visit in Kandy:\",\n  \"API\": {\n    \"google_map_business\": {\n      \"Search_In_Area\": {\n        \"query\": \"attractions\",\n        \"limit\": \"10\",\n        \"lat\": \"7.290570\",\n        \"lng\": \"80.633726\",\n        \"zoom\": \"13\",\n  \"language\": \"en\",\n \"region\": \"lk\"\n          }\n    }\n  }\n}"
     },
     "11": {
         "role": "user",
-        "content": "Got it. To travel to Galle by car, you need to first plan your route. Can you please provide me with your current location?"
+        "content": "I am in Galle now, I want to go to the city.Want to stay in a hotel in Kandy"
     },
     "12": {
         "role": "assistant",
-        "content": "{\n    \"Hotels\": {\n        \"Search_hotels\": 0,\n        \"locations\": 100,\n        \"Data_hotel\": 0,\n        \"Reviews_hotel\": 0,\n        \"Description_hotel\": 0,\n        \"Review_scores\": 0,\n        \"coordinates\": 0\n    },\n    \"CarRent\": {\n        \"Search\": 100,\n        \"rental\": 0,\n        \"supplier_details\": 0,\n        \"Reviews_about_vehicles\": 0,\n        \"Rental_terms\": 0\n    },\n    \"ListData\": {\n        \"Hotels\": 0\n    },\n    \"Exchange\": 0\n}"
+        "content": "{\n  \"user_text_out\": \"Sure! Let me find the route from Galle to Kandy for you and recommend some hotels in Kandy.\",\n  \"API\": {\n    \"google_map_business\": {\n      \"Search\": {\n        \"query\": \"hotel\",\n        \"limit\": \"10\",\n        \"lat\": \"7.290570\",\n        \"lng\": \"80.633726\"\n   \"zoom\": \"13\",\n  \"language\": \"en\",\n \"region\": \"lk\"\n       }\n    },\n    \"google_map_routes\": {\n      \"FindDrivingRoute\": {\n        \"stops\": \"6.032319,80.217050; 7.290570,80.633726\"\n      }\n    }\n  }\n}"
     },
     "13": {
         "role": "user",
-        "content": "Sorry, but I'm not able to execute code or access files on your computer. However, I can help you with travel-related information. If you have any questions about traveling to Galle by car, feel free to ask!"
+        "content": "I am in Galle now, I want to go to the city.Want to stay in a hotel in Kandy"
     },
     "14": {
         "role": "assistant",
-        "content": "{\n    \"Hotels\": {\n        \"Search_hotels\": 0,\n        \"locations\": 0,\n        \"Data_hotel\": 0,\n        \"Reviews_hotel\": 0,\n        \"Description_hotel\": 0,\n        \"Review_scores\": 0,\n        \"coordinates\": 0\n    },\n    \"CarRent\": {\n        \"Search\": 100,\n        \"rental\": 0,\n        \"supplier_details\": 0,\n        \"Reviews_about_vehicles\": 0,\n        \"Rental_terms\": 0\n    },\n    \"ListData\": {\n        \"Hotels\": 0\n    },\n    \"Exchange\": 0\n}"
+        "content": "{\n  \"user_text_out\": \"Sure! Let me find the route from Galle to Kandy for you and recommend some hotels in Kandy.\",\n  \"API\": {\n    \"google_map_business\": {\n      \"Search_In_Area\": {\n        \"query\": \"hotel\",\n        \"limit\": \"10\",\n        \"lat\": \"7.290570\",\n        \"lng\": \"80.633726\",\n        \"zoom\": \"13\"\n      }\n    },\n    \"google_map_routes\": {\n      \"FindDrivingRoute\": {\n        \"stops\": \"6.032319,80.217050; 7.290570,80.633726\"\n      }\n    }\n  }\n}"
     },
     "15": {
         "role": "user",
-        "content": "I apologize for any confusion, but I'm unable to execute code on your computer. I'm here to provide you with information and answer any questions you may have about travel. If there's something specific you'd like to know or discuss, please let me know and I'll be happy to assist you."
+        "content": "I want to go from Galle to Matara"
     },
     "16": {
         "role": "assistant",
-        "content": "{\n    \"Hotels\": {\n        \"Search_hotels\": 0,\n        \"locations\": 0,\n        \"Data_hotel\": 0,\n        \"Reviews_hotel\": 0,\n        \"Description_hotel\": 0,\n        \"Review_scores\": 0,\n        \"coordinates\": 0\n    },\n    \"CarRent\": {\n        \"Search\": 0,\n        \"rental\": 0,\n        \"supplier_details\": 0,\n        \"Reviews_about_vehicles\": 0,\n        \"Rental_terms\": 0\n    },\n    \"ListData\": {\n        \"Hotels\": 0\n    },\n    \"Exchange\": 0\n}"
+        "content": "{\n  \"user_text_out\": \"Sure! Let me find the route from Galle to Matara for you.\",\n  \"API\": {\n    \"google_map_routes\": {\n      \"FindDrivingRoute\": {\n        \"stops\": \"6.032319,80.217050; 5.949317,80.535670\"\n      }\n    }\n  }\n}"
     },
     "17": {
         "role": "user",
-        "content": "Certainly! If you're planning to travel to Galle by car, here's some information to help you:\n\n- The distance between your current location and Galle will depend on where you're starting from. Can you please provide me with your current location?\n- The estimated travel duration will also vary depending on the route you choose and the traffic conditions. It's always a good idea to check for any potential road closures or construction work that might affect your journey.\n- For the best route options and real-time traffic updates, I recommend using navigation apps like Google Maps or Waze. They will provide you with turn-by-turn directions and help you navigate through the most efficient routes.\n\nOnce you provide me with your current location, I can give you more specific information about the distance, estimated travel duration, and route details."
+        "content": "I want to go from Galle to Matara and stop at Matara"
     },
     "18": {
-        "role": "user",
-        "content": "Got it! If you're planning to travel to Galle, there are a few details I would need to know in order to provide you with accurate information:\n\n1. What is your current location? This will help me determine the distance and route to Galle.\n2. Are you planning to drive your own car or rent one?\n3. Do you have any specific requirements or preferences for the route? For example, do you prefer the fastest route or a more scenic route?\n\nOnce I have this information, I'll be able to assist you further with your travel to Galle."
+        "role": "assistant",
+        "content": "{\n  \"user_text_out\": \"Sure! Let me find the route from Galle to Matara for you.\",\n  \"API\": {\n    \"google_map_routes\": {\n      \"FindDrivingRoute\": {\n        \"stops\": \"6.032319,80.217050; 5.949317,80.535670\"\n      }\n    }\n  }\n}"
     },
     "19": {
+        "role": "user",
+        "content": "i need to trevel galle"
+    },
+    "20": {
         "role": "assistant",
-        "content": "{\n    \"Hotels\": {\n        \"Search_hotels\": 0,\n        \"locations\": 100,\n        \"Data_hotel\": 0,\n        \"Reviews_hotel\": 0,\n        \"Description_hotel\": 0,\n        \"Review_scores\": 0,\n        \"coordinates\": 0\n    },\n    \"CarRent\": {\n        \"Search\": 100,\n        \"rental\": 0,\n        \"supplier_details\": 0,\n        \"Reviews_about_vehicles\": 0,\n        \"Rental_terms\": 0\n    },\n    \"ListData\": {\n        \"Hotels\": 0\n    },\n    \"Exchange\": 0\n}"
+        "content": "{\n  \"user_text_out\": \"Are you looking for things to do or places to visit in Galle?\",\n  \"API\": {\n    \"google_map_business\": {\n      \"Search_In_Area\": {\n        \"query\": \"attractions\",\n        \"limit\": \"10\",\n        \"lat\": \"6.032319\",\n        \"lng\": \"80.217050\",\n        \"zoom\": \"13\",\n  \"language\": \"en\",\n \"region\": \"lk\"\n         }\n    }\n  }\n}"
+    },
+    "21": {
+        "role": "user",
+        "content": "i need travel sri lanka in kandy"
+    },
+    "22": {
+        "role": "assistant",
+        "content": "{\n  \"user_text_out\": \"That sounds like a great plan! Kandy is a beautiful city with many attractions. Here are some popular places to visit in Kandy:\",\n  \"API\": {\n    \"google_map_business\": {\n      \"Search_In_Area\": {\n        \"query\": \"attractions\",\n        \"limit\": \"10\",\n        \"lat\": \"7.290570\",\n        \"lng\": \"80.633726\",\n        \"zoom\": \"13\",\n  \"language\": \"en\",\n \"region\": \"lk\"\n         }\n    }\n  }\n}"
+    },
+    "23": {
+        "role": "user",
+        "content": "i need trivel sri lanka in kandy"
+    },
+    "24": {
+        "role": "assistant",
+        "content": "{\n  \"user_text_out\": \"That sounds like a great plan! Kandy is a beautiful city in Sri Lanka with many attractions. Here are some popular places to visit in Kandy:\",\n  \"API\": {\n    \"google_map_business\": {\n      \"Search_In_Area\": {\n        \"query\": \"attractions\",\n        \"limit\": \"10\",\n        \"lat\": \"7.290570\",\n        \"lng\": \"80.633726\",\n        \"zoom\": \"13\",\n        \"language\": \"en\",\n        \"region\": \"lk\"\n      }\n    }\n  }\n}"
+    },
+    "25": {
+        "role": "user",
+        "content": "i need trivel galle"
+    },
+    "26": {
+        "role": "assistant",
+        "content": "{\n  \"user_text_out\": \"Are you looking for things to do or places to visit in Galle?\",\n  \"API\": {\n    \"google_map_business\": {\n      \"Search_In_Area\": {\n        \"query\": \"attractions\",\n        \"limit\": \"10\",\n        \"lat\": \"6.032319\",\n        \"lng\": \"80.217050\",\n        \"zoom\": \"13\",\n        \"language\": \"en\",\n        \"region\": \"lk\"\n      }\n    }\n  }\n}"
+    },
+    "27": {
+        "role": "user",
+        "content": "i need trivel galle"
+    },
+    "28": {
+        "role": "assistant",
+        "content": "{\n  \"user_text_out\": \"Are you looking for things to do or places to visit in Galle?\",\n  \"API\": {\n    \"google_map_business\": {\n      \"Search_In_Area\": {\n        \"query\": \"attractions\",\n        \"limit\": \"10\",\n        \"lat\": \"6.032319\",\n        \"lng\": \"80.217050\",\n        \"zoom\": \"13\",\n        \"language\": \"en\",\n        \"region\": \"lk\"\n      }\n    }\n  }\n}"
+    },
+    "29": {
+        "role": "user",
+        "content": "i need travel kandy in sri lanka"
+    },
+    "30": {
+        "role": "assistant",
+        "content": "{\n  \"user_text_out\": \"That sounds like a great plan! Kandy is a beautiful city in Sri Lanka with many attractions. Here are some popular places to visit in Kandy:\",\n  \"API\": {\n    \"google_map_business\": {\n      \"Search_In_Area\": {\n        \"query\": \"attractions\",\n        \"limit\": \"10\",\n        \"lat\": \"7.290570\",\n        \"lng\": \"80.633726\",\n        \"zoom\": \"13\",\n        \"language\": \"en\",\n        \"region\": \"lk\"\n      }\n    }\n  }\n}"
+    },
+    "31": {
+        "role": "user",
+        "content": "i need travel kandy in sri lanka"
+    },
+    "32": {
+        "role": "assistant",
+        "content": "{\n  \"user_text_out\": \"That sounds like a great plan! Kandy is a beautiful city in Sri Lanka with many attractions. Here are some popular places to visit in Kandy:\",\n  \"API\": {\n    \"google_map_business\": {\n      \"Search_In_Area\": {\n        \"query\": \"attractions\",\n        \"limit\": \"10\",\n        \"lat\": \"7.290570\",\n        \"lng\": \"80.633726\",\n        \"zoom\": \"13\",\n        \"language\": \"en\",\n        \"region\": \"lk\"\n      }\n    }\n  }\n}"
+    },
+    "33": {
+        "role": "user",
+        "content": "i need trivel kandy in sri lanka"
+    },
+    "34": {
+        "role": "assistant",
+        "content": "{\n  \"user_text_out\": \"That sounds like a great plan! Kandy is a beautiful city in Sri Lanka with many attractions. Here are some popular places to visit in Kandy:\",\n  \"API\": {\n    \"google_map_business\": {\n      \"Search_In_Area\": {\n        \"query\": \"attractions\",\n        \"limit\": \"10\",\n        \"lat\": \"7.290570\",\n        \"lng\": \"80.633726\",\n        \"zoom\": \"13\",\n        \"language\": \"en\",\n        \"region\": \"lk\"\n      }\n    }\n  }\n}"
+    },
+    "35": {
+        "role": "user",
+        "content": "i need trivel kandy in sri lanka"
+    },
+    "36": {
+        "role": "assistant",
+        "content": "{\n  \"user_text_out\": \"That sounds like a great plan! Kandy is a beautiful city in Sri Lanka with many attractions. Here are some popular places to visit in Kandy:\",\n  \"API\": {\n    \"google_map_business\": {\n      \"Search_In_Area\": {\n        \"query\": \"attractions\",\n        \"limit\": \"10\",\n        \"lat\": \"7.290570\",\n        \"lng\": \"80.633726\",\n        \"zoom\": \"13\",\n        \"language\": \"en\",\n        \"region\": \"lk\"\n      }\n    }\n  }\n}"
+    },
+    "37": {
+        "role": "user",
+        "content": "i need travel kandy in sri lanka"
+    },
+    "38": {
+        "role": "assistant",
+        "content": "{\n  \"user_text_out\": \"That sounds like a great plan! Kandy is a beautiful city in Sri Lanka with many attractions. Here are some popular places to visit in Kandy:\",\n  \"API\": {\n    \"google_map_business\": {\n      \"Search_In_Area\": {\n        \"query\": \"attractions\",\n        \"limit\": \"10\",\n        \"lat\": \"7.290570\",\n        \"lng\": \"80.633726\",\n        \"zoom\": \"13\",\n        \"language\": \"en\",\n        \"region\": \"lk\"\n      }\n    }\n  }\n}"
+    },
+    "39": {
+        "role": "user",
+        "content": "i need travel kandy in sri lanka"
+    },
+    "40": {
+        "role": "assistant",
+        "content": "{\n  \"user_text_out\": \"That sounds like a great plan! Kandy is a beautiful city in Sri Lanka with many attractions. Here are some popular places to visit in Kandy:\",\n  \"API\": {\n    \"google_map_business\": {\n      \"Search_In_Area\": {\n        \"query\": \"attractions\",\n        \"limit\": \"10\",\n        \"lat\": \"7.290570\",\n        \"lng\": \"80.633726\",\n        \"zoom\": \"13\",\n        \"language\": \"en\",\n        \"region\": \"lk\"\n      }\n    }\n  }\n}"
+    },
+    "41": {
+        "role": "user",
+        "content": "i need travel kandy in sri lanka"
+    },
+    "42": {
+        "role": "assistant",
+        "content": "{\n  \"user_text_out\": \"That sounds like a great plan! Kandy is a beautiful city in Sri Lanka with many attractions. Here are some popular places to visit in Kandy:\",\n  \"API\": {\n    \"google_map_business\": {\n      \"Search_In_Area\": {\n        \"query\": \"attractions\",\n        \"limit\": \"10\",\n        \"lat\": \"7.290570\",\n        \"lng\": \"80.633726\",\n        \"zoom\": \"13\",\n        \"language\": \"en\",\n        \"region\": \"lk\"\n      }\n    }\n  }\n}"
     }
 }

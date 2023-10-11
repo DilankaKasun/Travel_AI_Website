@@ -6,7 +6,7 @@ import booking
 import temp
 import proccesHandle
 import json
-
+import Map
 
 class AI_handle_data():
     def user_promt(self,use_data):
@@ -61,40 +61,44 @@ class AI_handle_data():
       return req
     
 
-    def print_json_structure(self,data):
-      try:
+    def convert_values_to_int(data, keys_to_convert):
+      result = data.copy()  # Create a copy of the input dictionary to avoid modifying the original
+      for key in keys_to_convert:
+          if key in result:
+              try:
+                  result[key] = int(result[key])
+              except ValueError:
+                  print(f"Error: Unable to convert '{key}' value to an integer.")
+      return result
+
+
+
+    def print_json_structure(self, data):
           if not data:
               print("Input JSON string is empty.")
               return
-          
           json_data = json.loads(data)
-          # print(json_data)
-          json_out ={}
-          json_out_ = {}
-          if isinstance(json_data, dict):
-              for key, value in json_data.items():
-                  if isinstance(value, dict):
-                      
-                      # print(f"Object Key: {key}")
-                      for sub_key, sub_value in value.items():
-                          if int(sub_value)>=50: 
-                            json_out[sub_key] =sub_value
-                            json_out_[key] = json_out 
-                  else:
-                      if int(value)>=50: 
-                            json_out[key] =value
-          else:
-              print("Invalid JSON structure")
-          return json_out_
-      except json.JSONDecodeError as e:
-          print(f"JSON decoding error: {e}")
-      except Exception as e:
-          print(f"Error: {e}")
+          MAP_API = []
+          mapData = Map.API_DATA()
+          for key, value in json_data.items():
+              if isinstance(value, dict):  # Check if 'value' is a dictionary
+                  for sub_1_key, sub_1_value in value.items():
+                      if isinstance(sub_1_value, dict):  # Check if 'sub_1_value' is a dictionary
+                          for sub_2_key, sub_2_value in sub_1_value.items():
+        
+                              if mapData.run(main=sub_1_key, sub=sub_2_key, par=sub_2_value):
+                                API_MAP=mapData.respons_(main=sub_1_key, sub=sub_2_key, par=sub_2_value)
+                                MAP_API.append(API_MAP)
+                      else:
+                          print(f"Value for '{sub_1_key}' is not a dictionary.")
+              else:
+                  print(f"Value for '{key}' is not a dictionary.")
+          return MAP_API
+                            
+      
     
     def select_function(self, _asssistan):
-      Data = _asssistan['message']['content']
-      out_KEY = None
-      return self.print_json_structure(data=Data)
+      return self.print_json_structure(data=_asssistan)
 
 
 
@@ -107,13 +111,15 @@ class AI_required(AI_handle_data):
       msg=self.required_data()
       
       response = openai.ChatCompletion.create(
-      model="gpt-3.5-turbo",
+      model="gpt-3.5-turbo-16k",
       messages=msg,
       temperature=1,
       max_tokens=256,
       top_p=1,
       frequency_penalty=0,
-      presence_penalty=0
+      presence_penalty=0,
+      stop=["Do not make too long descriptions in the conversation between the assistant and the user. If the user understands the fact that he needs to explain in detail, then explain in detail"]
+
       )
       return response['choices'][0]
 
@@ -134,7 +140,11 @@ class AI_required(AI_handle_data):
 class AI_response(AI_required,AI_handle_data):
     def finish_reason(self,req_data):
       temp = []
-      temp.append(req_data["message"]["content"])
+      try:
+        temp.append(req_data["message"]["content"])
+      except Exception as e:
+         temp.append(req_data)
+        
       req_1=self.main_required()
       self.continue_required()
       while (req_1['finish_reason']!="stop"):
@@ -149,79 +159,42 @@ class AI_response(AI_required,AI_handle_data):
       self.continue_required_AI(tot_data)
 
     def suport_system(self,resp):
-       API = booking.API()
-       assiten = resp['message']
-       if assiten: 
-        self.user_sub_promt(assiten['content'])
-        sub_repons=self.sub_required()
-        if sub_repons!={}:
+      API = booking.API()
+      self.user_sub_promt(resp)
+      sub_repons=self.sub_required()
+      if sub_repons!={}:
+        if (sub_repons["finish_reason"] != "stop"):
+          self.finish_reason(sub_repons)
           self.AI_sub_promt(use_data=sub_repons['message'])
-          # # print(self.select_function(_asssistan=sub_repons))
-          # req_ai_data = self.required_sub_data()[-1]["content"]   
-          select_function=self.select_function(_asssistan=sub_repons)
-          if select_function:
-            for key,val in select_function.items():
-              for key_sub,val_sub in val.items():
-                 if  int(val_sub)>50:
-                    if "Hotels" ==  key:   
-                      if "Search_hotels"==key_sub:
-                        pass
-                      elif "locations"==key_sub:
-                        pass
-                      elif "Data_hotel"==key_sub:
-                        pass
-                      elif "Reviews_hotel"==key_sub:
-                        pass
-                      elif "Description_hotel"==key_sub:
-                        pass
-                      elif "Review_scores"==key_sub:
-                        pass
-                      elif "coordinates"==key_sub:
-                        pass
-                    elif "CarRent" ==key:
-                      if "Search"==key_sub:
-                        pass
-                      elif "rental"==key_sub:
-                        pass
-                      elif "supplier_details"==key_sub:
-                        pass
-                      elif "Reviews_hotel"==key_sub:
-                        pass
-                      elif "Reviews_about_vehicles"==key_sub:
-                        pass
-                      elif "Rental_terms"==key_sub:
-                        pass
-                    elif "ListData" ==key:
-                      #  Hotels
-                      if "Hotels"==key_sub:
-                        pass
+          API_OUTPUT=self.required_sub_data()[-1]["content"]
+          
+          return self.select_function(_asssistan=API_OUTPUT)
+        else:
+          self.AI_sub_promt(use_data=sub_repons['message'])
+          API_OUTPUT=self.required_sub_data()[-1]["content"]
+          
+          return self.select_function(_asssistan=API_OUTPUT)
+             
 
-                       
-                         
-                    
-          
-          
     
 class AI_main(AI_response):
    def run(self,data):
       if data :
+     
         self.user_promt(use_data=data)
         req_data=self.main_required()
         if (req_data["finish_reason"] != "stop"):
             self.finish_reason(req_data)
-            # print(self.required_data()[-1]["content"])
-            print(self.suport_system(self.finish_reason(req_data)))
+            self.required_data()[-1]["content"]
+            self.suport_system(self.finish_reason(data))
+            return self.required_data()[-1]["content"],self.suport_system(self.finish_reason(data))
            
         else:
            self.AI_promt(use_data=req_data["message"])
-          #  print(self.required_data()[-1]["content"])
-           print(self.suport_system(req_data))
+           self.required_data()[-1]["content"]
+           self.suport_system(data)
+           return  self.required_data()[-1]["content"],self.suport_system(data)
    
 
-while (True):
-  data = input("Enter Input :")
-  x = AI_main()
-  x.run(data=data)
-# x = AI_response()
-# print(x.suport())
+
  
