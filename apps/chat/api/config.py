@@ -44,7 +44,7 @@ class config(API_Data):
         self._key("google_Map_Geocoding",dmain)
 
 class OpenAi():
-    OPENAI_API_KEY = "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"
+    OPENAI_API_KEY = "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"
         
     # end def      
 

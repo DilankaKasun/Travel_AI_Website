@@ -17,6 +17,8 @@
     
     <div class="app-main">
       <div class="chat-wrapper">
+
+        <!-- use -->
         <div class="message-wrapper reverse">
           <img class="message-pp" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=2550&amp;q=80" alt="profile-pic">
           <div class="message-box-wrapper">
@@ -26,24 +28,8 @@
             <span>9h ago</span>
           </div>
         </div>
-        <div class="message-wrapper reverse">
-          <img class="message-pp" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=2550&amp;q=80" alt="profile-pic">
-          <div class="message-box-wrapper">
-            <div class="message-box">
-              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </div>
-            <span>9h ago</span>
-          </div>
-        </div>
-        <div class="message-wrapper">
-          <img class="message-pp" src="https://images.unsplash.com/photo-1587080266227-677cc2a4e76e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=934&amp;q=80" alt="profile-pic">
-          <div class="message-box-wrapper">
-            <div class="message-box">
-              Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur
-            </div>
-            <span>9h ago</span>
-          </div>
-        </div>
+
+        <!-- assiten -->
         <div class="message-wrapper">
           <img class="message-pp" src="https://images.unsplash.com/photo-1587080266227-677cc2a4e76e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=934&amp;q=80" alt="profile-pic">
           <div class="message-box-wrapper">
@@ -53,71 +39,50 @@
             <span>9h ago</span>
           </div>
         </div>
+
+
+        {% for key, value in ai_chat_data.items() %}
+        <div class="message-wrapper">
+          <img class="message-pp" src="https://images.unsplash.com/photo-1587080266227-677cc2a4e76e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=934&amp;q=80" alt="profile-pic">
+          <div class="message-box-wrapper">
+            <div class="message-box">
+              {{value}}
+            </div>
+            <span>9h ago</span>
+          </div>
+        </div>
+        {% endfor %}
+
+        {% for key, value in user_chat_data.items() %}
         <div class="message-wrapper reverse">
           <img class="message-pp" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=2550&amp;q=80" alt="profile-pic">
           <div class="message-box-wrapper">
             <div class="message-box">
-              Lorem ipsum dolor sit amet
+             {{value}}
             </div>
             <span>9h ago</span>
           </div>
         </div>
-        <div class="message-wrapper reverse">
-          <img class="message-pp" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=2550&amp;q=80" alt="profile-pic">
-          <div class="message-box-wrapper">
-            <div class="message-box">
-              Lorem ipsum dolor
-            </div>
-            <span>9h ago</span>
-          </div>
-        </div>
-        <div class="message-wrapper">
-          <img class="message-pp" src="https://images.unsplash.com/photo-1587080266227-677cc2a4e76e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=934&amp;q=80" alt="profile-pic">
-          <div class="message-box-wrapper">
-            <div class="message-box">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit
-            </div>
-            <span>9h ago</span>
-          </div>
-        </div>
-        <div class="message-wrapper">
-          <img class="message-pp" src="https://images.unsplash.com/photo-1587080266227-677cc2a4e76e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=934&amp;q=80" alt="profile-pic">
-          <div class="message-box-wrapper">
-            <div class="message-box">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit
-            </div>
-            <span>9h ago</span>
-          </div>
-        </div>
-        <div class="message-wrapper">
-          <img class="message-pp" src="https://images.unsplash.com/photo-1587080266227-677cc2a4e76e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=934&amp;q=80" alt="profile-pic">
-          <div class="message-box-wrapper">
-            <div class="message-box">
-              Lorem ipsum dolor sit amet
-            </div>
-            <span>9h ago</span>
-          </div>
-        </div>
-      <div class="message-wrapper reverse">
-          <img class="message-pp" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=2550&amp;q=80" alt="profile-pic">
-          <div class="message-box-wrapper">
-            <div class="message-box">
-              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </div>
-            <span>9h ago</span>
-          </div>
-        </div>
+        {% endfor %}
+
+      
+        
+
       </div>
+      
+      <form id="message-form"  class="message-form" method="post">
       <div class="chat-input-wrapper">
-        <button class="chat-attachment-btn">
+        <button class="chat-attachment-btn" style="position: relative;">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-paperclip" viewBox="0 0 24 24">
             <defs></defs>
             <path d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48"></path>
           </svg>
         </button>
         <div class="input-wrapper">
-          <input type="text" class="chat-input" placeholder="Enter your message here">
-          <button class="emoji-btn">
+          
+            <input type="text" class="chat-input" id="message-input"   placeholder="Enter your message here">
+            <button class="emoji-btn">
+          
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-smile" viewBox="0 0 24 24">
             <defs></defs>
             <circle cx="12" cy="12" r="10"></circle>
@@ -125,9 +90,12 @@
           </svg>
         </button>
         </div>
-        <button class="chat-send-btn">Send</button>
+        <button class="chat-send-btn" >Send</button>
       </div>
+    </form>
+
     </div>
+
     <div class="app-right">
       <div class="app-profile-box">
         <img src="https://images.unsplash.com/photo-1587080266227-677cc2a4e76e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=934&amp;q=80" alt="profile">
@@ -138,6 +106,7 @@
     <path d="M21 8v13H3V8M1 3h22v5H1zM10 12h4"></path>
   </svg></button>
       </div>
+      
       <div class="app-activity-box">
         <div class="activity-info-boxes">
           <div class="activity-info-box time">

@@ -1,3 +1,78 @@
+// chat.js
+
+document.addEventListener('DOMContentLoaded', function () {
+    var form = document.querySelector('#message-form');
+    var input = document.querySelector('#message-input');
+    var chatMessages = document.querySelector('#chat-messages');
+
+    // Function to add a message to the chat window
+    function addMessage(sender, message) {
+        var messageDiv = document.createElement('div');
+        messageDiv.textContent = sender + ': ' + message;
+        chatMessages.appendChild(messageDiv);
+    }
+
+    // Function to send a message to the server via AJAX
+    function sendMessageToServer(message, url) {
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: { 'message': message },
+            success: function (response) {
+                if (response.status === 'success') {
+                    // Message sent to the server
+                    var userMessages = response.user_messages;
+                    var aiMessages = response.ai_messages;
+                    updateChatWindow(userMessages, aiMessages);
+                }
+            }
+        });
+    }
+
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var message = input.value;
+        input.value = '';
+        addMessage('You', message);
+        
+        // Determine which URL to use based on sender
+        var url = '/send_user_message'; // For user messages
+        if (message.startsWith('AI: ')) {
+            url = '/send_ai_message'; // For AI messages
+        }
+
+        sendMessageToServer(message, url);
+    });
+
+    // Function to update the chat window
+    function updateChatWindow(userMessages, aiMessages) {
+        chatMessages.innerHTML = '';  // Clear the chat window
+        for (var i = 0; i < Math.max(Object.keys(userMessages).length, Object.keys(aiMessages).length); i++) {
+            if (userMessages[i]) {
+                addMessage('User', userMessages[i]);
+            }
+            if (aiMessages[i]) {
+                addMessage('AI', aiMessages[i]);
+            }
+        }
+    }
+
+    // Fetch chat messages from the server and update the chat window
+    function fetchMessagesFromServer() {
+        $.ajax({
+            type: 'GET',
+            url: '/get_messages',
+            success: function (response) {
+                var userMessages = response.user_messages;
+                var aiMessages = response.ai_messages;
+                updateChatWindow(userMessages, aiMessages);
+            }
+        });
+    }
+
+    fetchMessagesFromServer();
+});
+
 
 
 "use strict";
@@ -122,11 +197,6 @@ function viewPaymetmonthly() {
     Annually.style.display = "flex"
 
 }
-
-
-
-
-
 
 
 

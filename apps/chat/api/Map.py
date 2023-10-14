@@ -1,7 +1,6 @@
-import config
 import requests
 import json
-
+from apps.chat.api.config import * 
 class APIfunctoin():
     pass
 
@@ -118,7 +117,7 @@ class queryhandle(google_map_business,google_map_routes,google_Map_Geocoding):
 class handle(queryhandle,Datahandel):
 	def url(self,main,sub):
 
-		config_run = config.main()
+		config_run = main()
 		config_url = Datahandel()
 		if (main == "google_map_business"):
 			_data=config_url._set(main,sub)
